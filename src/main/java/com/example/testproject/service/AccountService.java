@@ -2,6 +2,7 @@ package com.example.testproject.service;
 
 import com.example.testproject.dto.AccountDto;
 import com.example.testproject.dto.AccountMapper;
+import com.example.testproject.exception.EntityNotFoundException;
 import com.example.testproject.model.Account;
 import com.example.testproject.enums.EAccountStatus;
 import com.example.testproject.repository.AccountRepository;
@@ -39,5 +40,12 @@ public class AccountService {
         }
         log.info("Empty page has been retrieved");
         return new PageImpl<>(List.of(), pageable, 0);
+    }
+
+    public Account getById(Long id) {
+        return repository.findById(id).orElseThrow(() -> {
+                    String msg = String.format("Account with id %d not found", id);
+                    return new EntityNotFoundException(msg);
+                });
     }
 }
