@@ -6,6 +6,8 @@ on:
   #Trigger the workflow on push from the main branch
   push:
     branches:
+      - dev
+      - release
       - master
 jobs:
   #Test's job
