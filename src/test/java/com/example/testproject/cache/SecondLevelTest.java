@@ -9,14 +9,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
-public class SecondLevelTest {
+class SecondLevelTest {
 
     @PersistenceContext
     private EntityManager em;
 
     @Test
     @Transactional
-    public void find1() {
+    void find1() {
         City city = em.find(City.class, 1L);
         System.out.println("select_1");
         Assertions.assertEquals("Moscow", city.getName());
@@ -24,7 +24,7 @@ public class SecondLevelTest {
 
     @Test
     @Transactional
-    public void find2() {
+    void find2() {
         City city = em.find(City.class, 1L);
         System.out.println("select_2");
         Assertions.assertEquals("Moscow", city.getName());

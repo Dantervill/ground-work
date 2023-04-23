@@ -9,14 +9,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
-public class FirstLevelCacheTest {
+class FirstLevelCacheTest {
 
     @PersistenceContext
     private EntityManager em;
 
     @Test
     @Transactional
-    public void when2Finds_thenOneFind() {
+    void when2Finds_thenOneFind() {
         System.out.println("EntityManager/Session is open: " + em.isOpen());
         City city = em.find(City.class, 1L);
         System.out.println("finding for the 1 time");
